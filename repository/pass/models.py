@@ -14,4 +14,3 @@ class Password(models.Model):
 
     def __str__(self):
         return self.password
-
