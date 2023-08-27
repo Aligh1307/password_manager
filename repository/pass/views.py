@@ -11,6 +11,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
+
 class PasswordViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Password.objects.filter(user=self.request.user)

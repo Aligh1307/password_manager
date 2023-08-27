@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from .models import User, Password
 
 
@@ -9,6 +10,16 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'password']
 
+    def create(self, validated_data):
+        instance = super().create(validated_data)
+        instance.set_password(validated_data['password'])
+        instance.save()
+
+    def update(self, instance, validated_data):
+        super().update(validated_data)
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
 
     def validate_password(self, value):
         if len(value) < 8:
