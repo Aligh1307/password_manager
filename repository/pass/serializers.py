@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'password']
 
+
     def validate_password(self, value):
         if len(value) < 8:
             raise serializers.ValidationError("داداش کمتر از ۸ کاراکتر نمیشع ")
@@ -19,3 +20,7 @@ class PasswordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Password
         exclude = ['user']
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
