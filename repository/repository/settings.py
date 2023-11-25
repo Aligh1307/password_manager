@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '185.97.119.227', 'pass.ariomotion.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '37.32.5.81', 'pass.ariomotion.com']
 
 # Application definition
 
